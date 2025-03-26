@@ -1,0 +1,69 @@
+# 并行执行的第二个工作流
+name: Tester
+
+# 触发的时间与linter一样
+on: [push, pull_request]
+
+jobs:
+  tester:
+    runs-on: ${{ matrix.os }}
+    # 如何生成作业的矩阵策略
+    strategy:
+      # 作业将在三个不同的操作系统和不同的Node.js上运行（一共9个组合）
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: ["18", "20", "22"]
+      # 某一组合失败不会影响其他组合的运行（默认true）
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        # 引用外部的标准步骤
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache NPM dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm i
+      - name: Test
+        run: npm test
+        env:
+          CI: true
+  # 与test并行执行
+  coverage:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: ["22"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache NPM dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm install
+      - name: Coverage
+        # 生成代码覆盖率报告
+        run: npm run test-cov
+        env:
+          CI: true
+      # 将覆盖率报告上传至Coveralls
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}

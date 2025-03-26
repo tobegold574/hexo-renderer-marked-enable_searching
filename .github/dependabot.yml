@@ -1,0 +1,14 @@
+version: 2
+# 自动更新依赖项
+updates:
+- package-ecosystem: npm
+  # 依赖文件所在目录
+  directory: "/"
+  # 更新日期
+  schedule:
+    interval: monthly
+  # 忽略补丁更新
+  ignore:
+    - dependency-name: "*"
+      update-types: ["version-update:semver-patch"]
+  open-pull-requests-limit: 5

@@ -1,0 +1,10 @@
+{
+    "source": {
+      "include": ["lib/renderer.js"]
+    },
+    "plugins": ["plugins/markdown"],
+    "opts": {
+        "destination": "./docs"
+    }
+}
+  

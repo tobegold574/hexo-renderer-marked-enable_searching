@@ -1,0 +1,4 @@
+# 不用测试这些文件
+node_modules/
+coverage/
+tmp/

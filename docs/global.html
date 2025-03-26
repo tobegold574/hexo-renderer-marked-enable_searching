@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="rATag"><span class="type-signature">(constant) </span>rATag<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>匹配 html 的 a 标签：</p>
+<ol>
+<li><code>/...../</code>  为正则表达式的界定符，<code>/i</code> 的 <code>i</code> 是标志位，表示不区分大小写</li>
+<li><code>a</code> 标签的起始分隔符直接匹配</li>
+<li><code>(?: ...)</code> 非捕获组，匹配内容但不捕获</li>
+<li><code>\s+?</code> 匹配至少一个空白字符，<code>\s</code> 匹配任意空白字符，<code>+?</code> 懒惰量词，尽可能少地匹配</li>
+<li><code>|\s+?[^&lt;&gt;]+\s+?</code> 或者匹配一些空白字符之后的非尖括号内容（至少一个）以及后面的空白字符，<code>[^&lt;&gt;]</code> 表示非尖括号内容</li>
+<li><code>href=[&quot;']</code> 匹配 <code>href</code>，<code>[&quot;']</code> 表示单引号或者双引号</li>
+<li><code>(?:#)</code> 非捕获组捕获 <code>#</code></li>
+<li><code>([^&lt;&gt;&quot;']+)</code> 捕获非尖括号和单双引号外的字符至少一个，<code>+</code> 表示至少一次或以上</li>
+<li><code>[&quot;']</code> 匹配结束引号</li>
+<li><code>[^&lt;&gt;]*</code> 匹配非尖括号外字符零次或多次，<code>*</code> 代表零次及以上</li>
+</ol>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="renderer.js.html">renderer.js</a>, <a href="renderer.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rDlSyntax"><span class="type-signature">(constant) </span>rDlSyntax<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>匹配以换行符 <br> 和冒号 : 为分隔的键值对结构</p>
+<ol>
+<li><code>/..../</code> 为正则表达式的界定符</li>
+<li><code>(?:^|\s)</code> 表示一个非捕获组，匹配字符串 <code>(\S.+)</code> 的开头 <code>(^)</code> ，或一个空白字符 <code>(\s)</code></li>
+<li><code>(\S.+)</code> 表示捕获以非空白字符 <code>(\S)</code> 开头，后跟任意字符 <code>(.)</code> 至少一次的字符串</li>
+<li><code>&lt;br&gt;:</code> 表示直接匹配字符串 <br> 和冒号 :</li>
+<li><code>\s+(\S.+)</code> 表示匹配一个或多个空白字符 <code>(\s+)</code> 后接以非空白字符开头的字符串 <code>(\S.+)</code> ，长度至少为2</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="renderer.js.html">renderer.js</a>, <a href="renderer.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="anchorId"><span class="type-signature"></span>anchorId<span class="signature">(str, transformOption)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>生成规范化的 ID 字符串，作为 html 元素的 ID 或者锚点链接：</p>
+<ol>
+<li>unescape() 用于将 html 转义字符转回原始字符</li>
+<li>stripHTML() 用于移除所有 html 标签，仅保留纯文本</li>
+<li>transformOption 将转换规则传给 slugize() ，后者会将空格转为连字符、以及转小写等等</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>处理字符串</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transformOption</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选参数</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="renderer.js.html">renderer.js</a>, <a href="renderer.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>处理后的规范化字符串</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mangleEmail"><span class="type-signature"></span>mangleEmail<span class="signature">(text)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>此函数用于将邮件地址和其他文本混淆，以避免被垃圾邮件收集器抓取</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>需要处理的邮件地址</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="renderer.js.html">renderer.js</a>, <a href="renderer.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>返回处理完毕的邮箱和文本混合字符串</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="renderer.html">renderer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#anchorId">anchorId</a></li><li><a href="global.html#mangleEmail">mangleEmail</a></li><li><a href="global.html#rATag">rATag</a></li><li><a href="global.html#rDlSyntax">rDlSyntax</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Jan 11 2025 15:22:32 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

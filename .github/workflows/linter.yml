@@ -1,0 +1,43 @@
+# 工作流名称
+name: Linter
+
+# 触发工作流事件
+on: [push, pull_request]
+
+# 作业
+jobs:
+  # 作业所属的工作流
+  linter:
+    # 运行环境（github提供）
+    runs-on: ubuntu-latest
+    # 作业步骤
+    steps:
+      # 标准步骤，检出代码
+      - uses: actions/checkout@v4
+      # 自定义步骤，使用Node.js 22
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # 自定义步骤，缓存NPM依赖（缓存优先）
+      - name: Cache NPM dependencies
+        # 标准步骤
+        uses: actions/cache@v4
+        with:
+          # 缓存目录
+          path: node_modules
+          # 缓存标识
+          key: ${{ runner.OS }}-npm-cache
+          # 备选缓存键
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      # 安装依赖
+      - name: Install Dependencies
+        run: npm install
+      # 运行ESLint（只有前面的步骤完成，才能检查代码，同时放在最后可以避免不必要的代码检查）
+      - name: Lint
+        run: |
+          npm run eslint
+        env:
+          # 持续集成环境（跳过交互式提示）
+          CI: true
